@@ -7,6 +7,7 @@ public class ParkingSpots {
 	
 	public ParkingSpots(VehicleSize size) {
 	this.spotSize = size;
+	this.vehicle = null;
 	}
 	
 	public boolean emptySpot () {
@@ -25,10 +26,13 @@ public class ParkingSpots {
 		}
 		else {
 			if(spotSize == VehicleSize.BUS) {
+				System.out.println("bus is called");
 				sb.append('l');
 			}else if(spotSize == VehicleSize.CAR) {
+				System.out.println("car is called");
 				sb.append('c');
-			}else if(spotSize == VehicleSize.MOTORCYCLE);{
+			}else {
+				System.out.println("motor is called");
 				sb.append('m');
 			}
 		}
