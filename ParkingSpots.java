@@ -26,13 +26,13 @@ public class ParkingSpots {
 		}
 		else {
 			if(spotSize == VehicleSize.BUS) {
-				System.out.println("bus is called");
+				//System.out.println("bus is called");
 				sb.append('l');
 			}else if(spotSize == VehicleSize.CAR) {
-				System.out.println("car is called");
+				//System.out.println("car is called");
 				sb.append('c');
 			}else {
-				System.out.println("motor is called");
+				//System.out.println("motor is called");
 				sb.append('m');
 			}
 		}
