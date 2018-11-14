@@ -5,5 +5,4 @@ public class Motorcycle extends Vehicle{
 		spaceTaken = 1;
 		size = VehicleSize.MOTORCYCLE;
 	}
-
 }

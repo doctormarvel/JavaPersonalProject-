@@ -6,8 +6,5 @@ public class Bus extends Vehicle{
 		size = VehicleSize.BUS;
 	}
 	
-	public void park() {
-		
-	}
 	
 }

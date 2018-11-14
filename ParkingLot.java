@@ -22,4 +22,8 @@ public class ParkingLot {
 		return sb.toString();
 	}
 	
+	public int getTotalSpots () {
+		return this.totalSpots;
+	}
+	
 }
