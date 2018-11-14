@@ -16,7 +16,7 @@ public class DriverClass {
 		System.out.println("How many spots per row are there?");
 		spotsPerRow = input.nextInt();
 		
-		System.out.println("How many spots are there?");
+		System.out.println("How many spots are there per level?");
 		numberOfSpots = input.nextInt();
 		
 		lot = new ParkingLot(numberOfSpots, spotsPerRow, numberOfLevels);

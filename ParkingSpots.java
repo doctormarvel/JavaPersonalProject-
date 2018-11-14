@@ -14,15 +14,26 @@ public class ParkingSpots {
 		return vehicle == null;
 	}
 	
-	//public boolean parkCar () {
-		
-	//}
+	public Vehicle getVehicle () {
+		return this.vehicle;
+	}
+	
+	public void setVehicle (Vehicle veh) {
+		this.vehicle = veh;
+	}
+	
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
 		if (!emptySpot()) {
-			
+			if (vehicle instanceof Bus) {
+				sb.append('B');
+			}else if (vehicle instanceof Car) {
+				sb.append('C');
+			}else {
+				sb.append('M');
+			}
 		}
 		else {
 			if(spotSize == VehicleSize.BUS) {
