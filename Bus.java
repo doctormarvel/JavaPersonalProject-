@@ -14,7 +14,7 @@ public class Bus extends Vehicle{
 					while (temp != 5) {
 						for (temp = 1; temp <5; temp++) {
 							if (canPark(spots.getParkingLevels(i).getParkingSpots(j))) {
-								
+								System.out.println("Bus print = " + temp);
 							}
 							else {
 								System.out.println("The bus can not fit");

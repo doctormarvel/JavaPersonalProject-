@@ -35,8 +35,11 @@ public class DriverClass {
 			userInput = input.nextLine(); 
 			if(userInput.equals("park")) {
 				System.out.println("What would you like to park, a bus, a car, or a motorcycle?");
+				userInput = input.nextLine();// buffer for the next line
+				userInput = input.nextLine();
 				if (userInput.equals("bus")) {
-					
+					bus = new Bus();
+					bus.park(lot);//error occurring here. I don't know how to fix it and I am not sure how I am supposed to call the method from bus
 				}
 				else if (userInput.equals("car")) {
 					
@@ -50,6 +53,8 @@ public class DriverClass {
 				}
 			}
 			else if (userInput.equals("remove")) {
+				userInput = input.nextLine();// buffer for the next line
+				userInput = input.nextLine();
 				
 			}
 			else if (userInput.equals("end")) {
@@ -59,6 +64,8 @@ public class DriverClass {
 				System.out.println("I think an error occured, see you later");
 				break;
 			}
+			System.out.println("This is the new lot");
+			System.out.println(lot);
 		}
 		
 	}
