@@ -6,8 +6,8 @@ public class Vehicle {
 	public Vehicle () {
 	}
 	
-	public boolean canPark (Vehicle obj) {
-		if(obj == null) {
+	public boolean canPark (ParkingSpots spot) {
+		if(spot.emptySpot() && spot.getVehicleSize() == size) {
 			return true;
 		}
 		else {
@@ -15,7 +15,7 @@ public class Vehicle {
 		}
 	}
 	
-	public void park (Vehicle obj) {
+	public void park (ParkingLot spots) {
 	}
 	
 	public VehicleSize getSize () {

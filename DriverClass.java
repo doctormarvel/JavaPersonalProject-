@@ -31,7 +31,8 @@ public class DriverClass {
 		
 		while (lot.getTotalSpots() != 0) {
 			System.out.println("Type \"park\" to park a vehicle, \"remove\" to remove a vehicle or type \"end\" to end the program");
-			userInput = input.nextLine();
+			userInput = input.nextLine();// buffer for the next line 
+			userInput = input.nextLine(); 
 			if(userInput.equals("park")) {
 				System.out.println("What would you like to park, a bus, a car, or a motorcycle?");
 				if (userInput.equals("bus")) {

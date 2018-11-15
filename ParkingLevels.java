@@ -4,18 +4,16 @@ public class ParkingLevels {
 	private int SPOTS_PER_ROW = 10;
 	private ParkingSpots[] spotsInRows;
 	private VehicleSize spotSize;
-	private int rowCount;
 	private int motorcycleSpots;
 	private int carSpots;
 	private int busSpots;
 	
 	public ParkingLevels () {
-		this.spotsInRows = new ParkingSpots[SPOTS_PER_ROW];
+		this.spotsInRows = new ParkingSpots[SPOTS_PER_LEVEL];
 	}
 	
 	public ParkingLevels(int spots, int spr) {
 		this.spotsInRows = new ParkingSpots[spots];
-		this.rowCount = spots/spr;
 		SPOTS_PER_ROW = spr;
 		SPOTS_PER_LEVEL = spots;
 		motorcycleSpots = (int)(spots *(20.0f/100.0f));
@@ -43,6 +41,14 @@ public class ParkingLevels {
 //				System.out.println("This is how many motor spots" + motorcycleSpots);
 			}
 		}
+	}
+	
+	public int getSpotsPerLevel() {
+		return this.SPOTS_PER_LEVEL;
+	}
+	
+	public ParkingSpots getParkingSpots(int index) {
+		return spotsInRows[index];
 	}
 	
 	public String toString() {

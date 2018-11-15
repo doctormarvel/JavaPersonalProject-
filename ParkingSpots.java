@@ -18,8 +18,17 @@ public class ParkingSpots {
 		return this.vehicle;
 	}
 	
+	public VehicleSize getVehicleSize() {
+		return this.spotSize;
+	}
+	
 	public void setVehicle (Vehicle veh) {
 		this.vehicle = veh;
+	}
+	
+	//don't think I need this method
+	public void setVehicleSize (VehicleSize size) {
+		this.spotSize = size;
 	}
 	
 	
