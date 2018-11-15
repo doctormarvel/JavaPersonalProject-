@@ -1,7 +1,7 @@
 
 public class ParkingLot {
 	private int NUM_OF_LEVELS = 5;
-	private ParkingLevels[] level; // need to find a way to make this visible
+	private ParkingLevels[] level;
 	private int totalSpots;
 	
 	public ParkingLot(int spots, int spr, int lvl) {
@@ -20,6 +20,17 @@ public class ParkingLot {
 	
 	public ParkingLevels getParkingLevels(int index) {
 		return level[index];
+	}
+	
+	public void Park (Vehicle vehicle) {
+		int spotTaken = -1;
+		for (int i = 0; i < level.length; i++) {
+			
+		}
+	}
+	
+	public void Remove () {
+		
 	}
 	
 	public String toString() {

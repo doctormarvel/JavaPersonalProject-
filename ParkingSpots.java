@@ -1,36 +1,34 @@
 
 public class ParkingSpots {
-	private VehicleSize spotSize;
+	private Size spotSize;
 	private Vehicle vehicle;
 	
 	public ParkingSpots() {}
 	
-	public ParkingSpots(VehicleSize size) {
+	public ParkingSpots(Size size) {
 	this.spotSize = size;
 	this.vehicle = null;
 	}
 	
+	//Returns true if the spot is empty
 	public boolean emptySpot () {
 		return vehicle == null;
 	}
 	
+	//Returns the vehicle that is inside the parking spot
 	public Vehicle getVehicle () {
 		return this.vehicle;
 	}
 	
-	public VehicleSize getVehicleSize() {
+	//Returns the vehicle size that is in the spot
+	public Size getSpotSize() {
 		return this.spotSize;
 	}
 	
+	//Sets the vehicle that is inside the spot
 	public void setVehicle (Vehicle veh) {
 		this.vehicle = veh;
 	}
-	
-	//don't think I need this method
-	public void setVehicleSize (VehicleSize size) {
-		this.spotSize = size;
-	}
-	
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -45,14 +43,11 @@ public class ParkingSpots {
 			}
 		}
 		else {
-			if(spotSize == VehicleSize.BUS) {
-				//System.out.println("bus is called");
+			if(spotSize == Size.LARGE) {
 				sb.append('l');
-			}else if(spotSize == VehicleSize.CAR) {
-				//System.out.println("car is called");
+			}else if(spotSize == Size.MEDIUM) {
 				sb.append('c');
 			}else {
-				//System.out.println("motor is called");
 				sb.append('m');
 			}
 		}

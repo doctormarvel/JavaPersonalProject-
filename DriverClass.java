@@ -17,7 +17,7 @@ public class DriverClass {
 		String userInput;
 		
 		System.out.println("How many levels are there?");
-		numberOfLevels = input.nextInt();
+		numberOfLevels = input.nextInt(); // need to convert this from string to int
 		
 		System.out.println("How many spots per row are there?");
 		spotsPerRow = input.nextInt();
@@ -31,15 +31,13 @@ public class DriverClass {
 		
 		while (lot.getTotalSpots() != 0) {
 			System.out.println("Type \"park\" to park a vehicle, \"remove\" to remove a vehicle or type \"end\" to end the program");
-			userInput = input.nextLine();// buffer for the next line 
-			userInput = input.nextLine(); 
+			userInput = input.next();
 			if(userInput.equals("park")) {
 				System.out.println("What would you like to park, a bus, a car, or a motorcycle?");
-				userInput = input.nextLine();// buffer for the next line
-				userInput = input.nextLine();
+				userInput = input.next();
 				if (userInput.equals("bus")) {
 					bus = new Bus();
-					bus.park(lot);//error occurring here. I don't know how to fix it and I am not sure how I am supposed to call the method from bus
+					bus.park(lot);
 				}
 				else if (userInput.equals("car")) {
 					
@@ -53,8 +51,7 @@ public class DriverClass {
 				}
 			}
 			else if (userInput.equals("remove")) {
-				userInput = input.nextLine();// buffer for the next line
-				userInput = input.nextLine();
+				userInput = input.next();
 				
 			}
 			else if (userInput.equals("end")) {
