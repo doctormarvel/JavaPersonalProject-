@@ -39,7 +39,11 @@ public class ParkingLevels {
 			if (vehicle.getSize() == Size.LARGE && spotsInRow[i].emptySpot()) {
 				if(spotsInRow[i].getSpotSize()== Size.LARGE) {
 					spotFound = i;
-					break;
+					for (int check = 0; check < 5; check++) {
+						if (spotsInRow[i+check].getSpotSize() != Size.LARGE) {
+							spotFound = -1;
+						}
+					}
 				}
 				else {
 					spotFound = -1;
@@ -68,6 +72,11 @@ public class ParkingLevels {
 			}
 		}
 		return spotFound;
+	}
+	
+	public void placeVehicle (Vehicle vehicle, int spot) {
+		spotsInRow[spot].setVehicle(vehicle);
+		System.out.println("PlaceVehicle is called with spot # " + spot);
 	}
 	
 	public int getSpotsPerLevel () {

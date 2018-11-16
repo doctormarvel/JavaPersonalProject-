@@ -23,9 +23,20 @@ public class ParkingLot {
 	}
 	
 	public void Park (Vehicle vehicle) {
-		int spotTaken = -1;
+		int spotReturned = -1;
 		for (int i = 0; i < level.length; i++) {
-			
+			spotReturned = level[i].findFirstSpot(vehicle);
+			if(spotReturned == -1) {
+				break;
+			}
+			else if (vehicle instanceof Bus) {
+				for (int j =0; j < 5; j++) {
+					level[i].placeVehicle(vehicle, spotReturned+j);
+				}
+			}
+			else {
+				System.out.println("There is a problem in park");
+			}
 		}
 	}
 	

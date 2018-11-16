@@ -37,7 +37,7 @@ public class DriverClass {
 				userInput = input.next();
 				if (userInput.equals("bus")) {
 					bus = new Bus();
-					bus.park(lot);
+					lot.Park(bus);
 				}
 				else if (userInput.equals("car")) {
 					
