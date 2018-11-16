@@ -26,11 +26,8 @@ public class ParkingLot {
 		int spotReturned = -1;
 		for (int i = 0; i < level.length; i++) {
 			spotReturned = level[i].findFirstSpot(vehicle);
-			if(spotReturned == -1) {
-				break;
-			}
-			else if (vehicle instanceof Bus) {
-				for (int j =0; j < 5; j++) {
+			if(spotReturned != -1) {
+				for(int j = 0; j < vehicle.getSpaceTaken(); j++) {
 					level[i].placeVehicle(vehicle, spotReturned+j);
 				}
 			}
