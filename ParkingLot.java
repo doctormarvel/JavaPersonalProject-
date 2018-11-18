@@ -25,11 +25,13 @@ public class ParkingLot {
 	public void Park (Vehicle vehicle) {
 		int spotReturned = -1;
 		for (int i = 0; i < level.length; i++) {
-			spotReturned = level[i].findFirstSpot(vehicle);
+			spotReturned = level[i].findFirstEmptySpot(vehicle);
+			System.out.println("The spot that is returned = " + spotReturned);
 			if(spotReturned != -1) {
 				for(int j = 0; j < vehicle.getSpaceTaken(); j++) {
 					level[i].placeVehicle(vehicle, spotReturned+j);
 				}
+				break;
 			}
 			else {
 				System.out.println("There is a problem in park");
@@ -37,8 +39,20 @@ public class ParkingLot {
 		}
 	}
 	
-	public void Remove () {
-		
+	public void Remove (Vehicle vehicle) {
+		int spotReturned = -1;
+		for(int i = 0; i < level.length; i++) {
+			spotReturned = level[i].findFirstFullSpot(vehicle);
+			if(spotReturned != -1) {
+				for(int j = 0; j < vehicle.getSpaceTaken(); j++) {
+					level[i].removeVehicle(spotReturned+j);
+				}
+				break;
+			}
+			else {
+				System.out.println("There was a problem in remove");
+			}
+		}
 	}
 	
 	public String toString() {

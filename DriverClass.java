@@ -40,10 +40,12 @@ public class DriverClass {
 					lot.Park(bus);
 				}
 				else if (userInput.equals("car")) {
-					
+					car = new Car();
+					lot.Park(car);
 				}
 				else if (userInput.equals("motorcycle")) {
-					
+					motorcycle = new Motorcycle();
+					lot.Park(motorcycle);
 				}
 				else {
 					System.out.println("Looks like we have bad input. Goodbye");
@@ -51,8 +53,24 @@ public class DriverClass {
 				}
 			}
 			else if (userInput.equals("remove")) {
+				System.out.println("What type of vehicle would you like to remove, a bus, a car, or a motorcycle");
 				userInput = input.next();
-				
+				if (userInput.equals("bus")) {
+					bus = new Bus();
+					lot.Remove(bus);
+				}
+				else if (userInput.equals("car")) {
+					car = new Car();
+					lot.Remove(car);
+				}
+				else if (userInput.equals("motorcycle")) {
+					motorcycle = new Motorcycle();
+					lot.Remove(motorcycle);
+				}
+				else {
+					System.out.println("There was bad input in remvoe driver");
+					break;
+				}
 			}
 			else if (userInput.equals("end")) {
 				break;
