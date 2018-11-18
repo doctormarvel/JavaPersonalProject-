@@ -1,9 +1,10 @@
 
 public class ParkingLot {
 	private int NUM_OF_LEVELS = 5;
-	private ParkingLevels[] level;
+	private ParkingLevels[] level;//an array of levels that are in the garage
 	private int totalSpots;
 	
+	//Overloaded constructor for parking lot
 	public ParkingLot(int spots, int spr, int lvl) {
 		this.level = new ParkingLevels[lvl];
 		this.totalSpots = spots*lvl;
@@ -14,19 +15,11 @@ public class ParkingLot {
 		}
 	}
 	
-	public int getNumOfLevels () {
-		return this.NUM_OF_LEVELS;
-	}
-	
-	public ParkingLevels getParkingLevels(int index) {
-		return level[index];
-	}
-	
+	//park method, pulls functions from parkingLevels and vehicle to check to see if we can park in the spot
 	public void Park (Vehicle vehicle) {
 		int spotReturned = -1;
 		for (int i = 0; i < level.length; i++) {
 			spotReturned = level[i].findFirstEmptySpot(vehicle);
-			System.out.println("The spot that is returned = " + spotReturned);
 			if(spotReturned != -1) {
 				for(int j = 0; j < vehicle.getSpaceTaken(); j++) {
 					level[i].placeVehicle(vehicle, spotReturned+j);
@@ -39,6 +32,7 @@ public class ParkingLot {
 		}
 	}
 	
+	//remove method, pulls functions from parkingLevels and vehicle to check to see if we can remove a vehicle in the spot
 	public void Remove (Vehicle vehicle) {
 		int spotReturned = -1;
 		for(int i = 0; i < level.length; i++) {
@@ -55,6 +49,7 @@ public class ParkingLot {
 		}
 	}
 	
+	//This toString splits the garage into levels
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < NUM_OF_LEVELS; i++) {

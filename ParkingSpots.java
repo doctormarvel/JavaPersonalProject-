@@ -5,6 +5,7 @@ public class ParkingSpots {
 	
 	public ParkingSpots() {}
 	
+	//overloaded constructor
 	public ParkingSpots(Size size) {
 	this.spotSize = size;
 	this.vehicle = null;
@@ -30,6 +31,7 @@ public class ParkingSpots {
 		this.vehicle = veh;
 	}
 	
+	//For the printout, when the system out is called this will be called. We are checking the spot with emptyspot
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		

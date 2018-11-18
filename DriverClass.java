@@ -24,11 +24,11 @@ public class DriverClass {
 		
 		System.out.println("How many spots are there per level?");
 		numberOfSpots = input.nextInt();
-		
+		//Creating the lot using the constructor 
 		lot = new ParkingLot(numberOfSpots, spotsPerRow, numberOfLevels);
 		
 		System.out.println(lot);
-		
+		//While loop that will continue till there are no more spots or until the user tells the program to end
 		while (lot.getTotalSpots() != 0) {
 			System.out.println("Type \"park\" to park a vehicle, \"remove\" to remove a vehicle or type \"end\" to end the program");
 			userInput = input.next();
@@ -48,8 +48,7 @@ public class DriverClass {
 					lot.Park(motorcycle);
 				}
 				else {
-					System.out.println("Looks like we have bad input. Goodbye");
-					break;
+					System.out.println("Looks like that is not a vehicle to park, try again");
 				}
 			}
 			else if (userInput.equals("remove")) {
@@ -68,18 +67,17 @@ public class DriverClass {
 					lot.Remove(motorcycle);
 				}
 				else {
-					System.out.println("There was bad input in remvoe driver");
-					break;
+					System.out.println("Looks like that is not a vehicle to remove, try again");
 				}
 			}
 			else if (userInput.equals("end")) {
 				break;
 			}
 			else {
-				System.out.println("I think an error occured, see you later");
-				break;
+				System.out.println("That's not an option, lets try again");
 			}
-			System.out.println("This is the new lot");
+			//Print the lot
+			System.out.println("\nThis is the new lot");
 			System.out.println(lot);
 		}
 		
