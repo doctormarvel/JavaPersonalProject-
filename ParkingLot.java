@@ -16,7 +16,7 @@ public class ParkingLot {
 	}
 	
 	//park method, pulls functions from parkingLevels and vehicle to check to see if we can park in the spot
-	public void Park (Vehicle vehicle) {
+	public void park (Vehicle vehicle) {
 		int spotReturned = -1;
 		for (int i = 0; i < level.length; i++) {
 			spotReturned = level[i].findFirstEmptySpot(vehicle);
@@ -32,8 +32,16 @@ public class ParkingLot {
 		}
 	}
 	
+	//specific parking method
+	public void specificPark (Vehicle vehicle, int ourLevel, int row, int spot) {
+		if (level[ourLevel].findSpecificSpot(vehicle, row, spot)) {
+			for (int i = 0; i < vehicle.getSpaceTaken(); i++)
+				level[ourLevel].placeVehicle(vehicle, row, spot+i);
+		}
+	}
+	
 	//remove method, pulls functions from parkingLevels and vehicle to check to see if we can remove a vehicle in the spot
-	public void Remove (Vehicle vehicle) {
+	public void remove (Vehicle vehicle) {
 		int spotReturned = -1;
 		for(int i = 0; i < level.length; i++) {
 			spotReturned = level[i].findFirstFullSpot(vehicle);
@@ -49,6 +57,14 @@ public class ParkingLot {
 		}
 	}
 	
+	//specific remove method
+	public void specificRemove(Vehicle vehicle, int ourLevel, int row, int spot) {
+		if(level[ourLevel].findSpecificFullSpot(vehicle, row, spot)) {
+			for(int i = 0; i < vehicle.getSpaceTaken(); i++) {
+				level[ourLevel].removeVehicle(row, spot);
+			}
+		}
+	}
 	//This toString splits the garage into levels
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

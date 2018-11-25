@@ -14,6 +14,9 @@ public class DriverClass {
 		int numberOfLevels = 0;
 		boolean testPass = true; // to help with the while loop
 		String userInput;
+		int userLevel = 0;
+		int userRow = 0;
+		int userSpot = 0;
 		
 		//total number of levels
 		System.out.println("How many levels are there?");
@@ -57,46 +60,100 @@ public class DriverClass {
 		
 		//While loop that will continue till there are no more spots or until the user tells the program to end
 		while (lot.getTotalSpots() != 0) {
-			System.out.println("Type \"park\" to park a vehicle, \"remove\" to remove a vehicle or type \"end\" to end the program");
+			System.out.println("Type \"park\" to park a vehicle, \"specificP\" to park in a specific spot, \"remove\" to remove a vehicle, \"specificR\" to reomve a specific vehicle, or type \"end\" to end the program");
 			userInput = input.next();
 			if(userInput.equals("park")) {
 				System.out.println("What would you like to park, a bus, a car, or a motorcycle?");
 				userInput = input.next();
 				if (userInput.equals("bus")) {
 					bus = new Bus();
-					lot.Park(bus);
+					lot.park(bus);
 				}
 				else if (userInput.equals("car")) {
 					car = new Car();
-					lot.Park(car);
+					lot.park(car);
 				}
 				else if (userInput.equals("motorcycle")) {
 					motorcycle = new Motorcycle();
-					lot.Park(motorcycle);
+					lot.park(motorcycle);
 				}
 				else {
 					System.out.println("Looks like that is not a vehicle to park, try again");
 				}
 			}
+			
+			else if (userInput.equals("specificP")) {
+				System.out.println("What level would you like to park in?");
+				userLevel = Integer.parseInt(input.next());
+				System.out.println("What row would you like to park in?");
+				userRow = Integer.parseInt(input.next());
+				System.out.println("What spot would you like to park in?");
+				userSpot = Integer.parseInt(input.next());
+				System.out.println("What would you like to park, a bus, a car, or a motorcycle?");
+				userInput = input.next();
+				if (userInput.equals("bus")) {
+					bus = new Bus();
+					lot.specificPark(bus, userLevel, userRow, userSpot);
+				}
+				else if (userInput.equals("car")) {
+					car = new Car();
+					lot.specificPark(car, userLevel, userRow, userSpot);
+				}
+				else if (userInput.equals("motorcycle")) {
+					motorcycle = new Motorcycle();
+					lot.specificPark(motorcycle, userLevel, userRow, userSpot);
+				}
+				else {
+					System.out.println("Looks like that is not a vehicle to park, try again");
+				}
+			}
+			
 			else if (userInput.equals("remove")) {
 				System.out.println("What type of vehicle would you like to remove, a bus, a car, or a motorcycle");
 				userInput = input.next();
 				if (userInput.equals("bus")) {
 					bus = new Bus();
-					lot.Remove(bus);
+					lot.remove(bus);
 				}
 				else if (userInput.equals("car")) {
 					car = new Car();
-					lot.Remove(car);
+					lot.remove(car);
 				}
 				else if (userInput.equals("motorcycle")) {
 					motorcycle = new Motorcycle();
-					lot.Remove(motorcycle);
+					lot.remove(motorcycle);
 				}
 				else {
 					System.out.println("Looks like that is not a vehicle to remove, try again");
 				}
 			}
+			
+			else if (userInput.equals("specificR")) {
+				System.out.println("What level would you like to remove in?");
+				userLevel = Integer.parseInt(input.next());
+				System.out.println("What row would you like to remove in?");
+				userRow = Integer.parseInt(input.next());
+				System.out.println("What spot would you like to remove in?");
+				userSpot = Integer.parseInt(input.next());
+				System.out.println("What would you like to remove, a bus, a car, or a motorcycle?");
+				userInput = input.next();
+				if (userInput.equals("bus")) {
+					bus = new Bus();
+					lot.specificRemove(bus, userLevel, userRow, userSpot);
+				}
+				else if (userInput.equals("car")) {
+					car = new Car();
+					lot.specificRemove(car, userLevel, userRow, userSpot);
+				}
+				else if (userInput.equals("motorcycle")) {
+					motorcycle = new Motorcycle();
+					lot.specificRemove(motorcycle, userLevel, userRow, userSpot);
+				}
+				else {
+					System.out.println("Looks like that is not a vehicle to park, try again");
+				}
+			}
+			
 			else if (userInput.equals("end")) {
 				System.out.println("\n\nEnding the program");
 				break;
