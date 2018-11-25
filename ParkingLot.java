@@ -26,8 +26,8 @@ public class ParkingLot {
 				}
 				break;
 			}
-			else {
-				System.out.println("There is a problem in park");
+			else if (spotReturned == -1 && i + 1 == level.length){
+				System.out.println("There is no room in the lot");
 			}
 		}
 	}
@@ -43,8 +43,8 @@ public class ParkingLot {
 				}
 				break;
 			}
-			else {
-				System.out.println("There was a problem in remove");
+			else if (spotReturned == -1 && i + 1 == level.length) {
+				System.out.println("There is no vehicle in the lot");
 			}
 		}
 	}

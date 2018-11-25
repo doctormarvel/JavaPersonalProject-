@@ -5,29 +5,56 @@ public class DriverClass {
 	public static void main (String[] args) {
 		Scanner input = new Scanner(System.in);
 		ParkingLot lot;
-		Vehicle vehicle;
 		Car car;
 		Bus bus;
 		Motorcycle motorcycle;
 		
-		int numberOfSpots;
-		int spotsPerRow;
-		int numberOfLevels;
-		
+		int numberOfSpots = 0;
+		int spotsPerRow = 0;
+		int numberOfLevels = 0;
+		boolean testPass = true; // to help with the while loop
 		String userInput;
 		
+		//total number of levels
 		System.out.println("How many levels are there?");
-		numberOfLevels = input.nextInt(); // need to convert this from string to int
+		while (testPass) {
+			try {
+				numberOfLevels = Integer.parseInt(input.next());
+				testPass = false;
+			} catch(NumberFormatException e){
+				System.out.println("not a valid number, try again");
+			}
+		}
 		
+		//total number of spots per row
 		System.out.println("How many spots per row are there?");
-		spotsPerRow = input.nextInt();
+		testPass = true; 
+		while (testPass) {
+			try {
+				spotsPerRow = Integer.parseInt(input.next());
+				testPass = false;
+			} catch(NumberFormatException e){
+				System.out.println("not a valid number, try again");
+			}
+		}
 		
+		//Total number of spots in a level
 		System.out.println("How many spots are there per level?");
-		numberOfSpots = input.nextInt();
+		testPass = true; 
+		while (testPass) {
+			try {
+				numberOfSpots = Integer.parseInt(input.next());
+				testPass = false;
+			} catch(NumberFormatException e){
+				System.out.println("not a valid number, try again");
+			}
+		}
+		
 		//Creating the lot using the constructor 
 		lot = new ParkingLot(numberOfSpots, spotsPerRow, numberOfLevels);
 		
 		System.out.println(lot);
+		
 		//While loop that will continue till there are no more spots or until the user tells the program to end
 		while (lot.getTotalSpots() != 0) {
 			System.out.println("Type \"park\" to park a vehicle, \"remove\" to remove a vehicle or type \"end\" to end the program");
@@ -71,6 +98,7 @@ public class DriverClass {
 				}
 			}
 			else if (userInput.equals("end")) {
+				System.out.println("\n\nEnding the program");
 				break;
 			}
 			else {
