@@ -204,6 +204,22 @@ public class ParkingLevels {
 		spotsInRow[newSpot].setVehicle(vehicle);
 	}
 	
+	//This method will be used if the space that is taken is greater than 1. Means it will only be used for busses
+	//We are checking to see if there are any busses ahead of the bus that we are removing. If there are then we need to remove the according to where they are placed
+	public int startSpot(Vehicle vehicle, int row, int spot) {
+		int newSpot = (row - 1) * SPOTS_PER_ROW + spot-1; // We need a new variable because the spot that we use won't be the same
+		int firstSpot = -1;
+		for (int i = 0; i < newSpot; i++) {
+			if(!spotsInRow[i].emptySpot() && spotsInRow[i].getSpotSize() == Size.LARGE && i == -1) {
+				firstSpot = i;
+			}
+			else if (spotsInRow[i].emptySpot() && spotsInRow[i].getSpotSize() == Size.LARGE) {
+				firstSpot = -1;
+			}
+		}
+		return firstSpot;
+	}
+	
 	//This toString helps us split the level into rows
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
