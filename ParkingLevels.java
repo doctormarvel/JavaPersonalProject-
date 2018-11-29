@@ -2,7 +2,7 @@
 public class ParkingLevels {
 	private int SPOTS_PER_LEVEL = 30;
 	private int SPOTS_PER_ROW = 10;
-	private ParkingSpots[] spotsInRow; //an array of spots that are available
+	private ParkingSpot[] spotsInRow; //an array of spots that are available
 	private Size spotSize;
 	private int motorcycleSpots;
 	private int carSpots;
@@ -11,7 +11,7 @@ public class ParkingLevels {
 	
 	//default constructor 
 	public ParkingLevels () {
-		this.spotsInRow = new ParkingSpots[SPOTS_PER_LEVEL];
+		this.spotsInRow = new ParkingSpot[SPOTS_PER_LEVEL];
 		motorcycleSpots = (int)(SPOTS_PER_LEVEL *(20.0f/100.0f));//taking 20% of the spots and gathering an int for motorcycle spots
 		busSpots = (int)(SPOTS_PER_LEVEL*(20.0f/100.0f)); //taking 20% of the spots and gathering an int for bus spots
 		carSpots = SPOTS_PER_LEVEL - busSpots - motorcycleSpots;
@@ -19,7 +19,7 @@ public class ParkingLevels {
 	
 	//Overloaded constructor, the default constructor will probably never be used since we are asking for input
 	public ParkingLevels(int spots, int spr) {
-		this.spotsInRow = new ParkingSpots[spots];
+		this.spotsInRow = new ParkingSpot[spots];
 		SPOTS_PER_ROW = spr;
 		SPOTS_PER_LEVEL = spots;
 		motorcycleSpots = (int)(spots *(20.0f/100.0f));//taking 20% of the spots and gathering an int for motorcycle spots
@@ -29,13 +29,13 @@ public class ParkingLevels {
 		//This is where we create our spots in the parking level.
 		for (int i = 0; i < spots; i++) {
 			if (busSpots > 0) {
-				spotsInRow[i] = new ParkingSpots(spotSize.LARGE);
+				spotsInRow[i] = new ParkingSpot(spotSize.LARGE);
 				busSpots--;
 			}else if (carSpots > 0 && busSpots==0) {
-				spotsInRow[i] = new ParkingSpots(spotSize.MEDIUM);
+				spotsInRow[i] = new ParkingSpot(spotSize.MEDIUM);
 				carSpots--;
 			}else {
-				spotsInRow[i] = new ParkingSpots(spotSize.SMALL);
+				spotsInRow[i] = new ParkingSpot(spotSize.SMALL);
 			}
 		}
 	}
@@ -199,10 +199,8 @@ public class ParkingLevels {
 		System.out.println("this is new spot " + newSpot);
 		int returnedSpot = 0;
 		int calcBusNumber = 0;
-		int firstSpot = 0;
 		for (int i = newSpot; i > 0; i--) {
 			if (spotsInRow[i].emptySpot() || spotsInRow[newSpot].getVehicle().getSize() != Size.LARGE) {
-				System.out.println("This is returned Spot = " + returnedSpot);
 				break;
 			}
 			else {
@@ -210,10 +208,7 @@ public class ParkingLevels {
 			}
 		}
 		calcBusNumber = (newSpot - returnedSpot)/5;
-		System.out.println("This is the bus number  = " + calcBusNumber);
-		firstSpot = returnedSpot + (calcBusNumber * 5);
-		System.out.println("This is the firstBus= " + firstSpot);
-		return firstSpot;
+		return returnedSpot + (calcBusNumber * 5);
 	}
 	
 	//this function will remove a vehicle in a specific spot

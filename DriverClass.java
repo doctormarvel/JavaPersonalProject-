@@ -69,7 +69,7 @@ public class DriverClass {
 		System.out.println(lot);
 		
 		//While loop that will continue till there are no more spots or until the user tells the program to end
-		while (lot.getTotalSpots() != 0) {
+		while (true) {
 			System.out.println("Type \"park\" to park a vehicle, \"specificP\" to park in a specific spot, \"remove\" to remove a vehicle, \"specificR\" to reomve a specific vehicle, or type \"end\" to end the program");
 			userInput = input.next();
 			if(userInput.equals("park")) {
@@ -97,7 +97,7 @@ public class DriverClass {
 				testPass = true;
 				while (testPass) {
 					userLevel = Integer.parseInt(input.next());
-					if (userLevel >= 0 || userLevel <= numberOfLevels) {
+					if (userLevel >= 0 && userLevel <= numberOfLevels) {
 						testPass = false;
 					}
 					else {
@@ -109,7 +109,7 @@ public class DriverClass {
 				testPass = true;
 				while (testPass) {
 					userRow = Integer.parseInt(input.next());
-					if (userRow >= 0 || userLevel <= numberOfSpots/spotsPerRow) {
+					if (userRow >= 0 && userRow <= numberOfSpots/spotsPerRow) {
 						testPass = false;
 					}
 					else {
@@ -121,7 +121,7 @@ public class DriverClass {
 				testPass = true;
 				while (testPass) {
 					userSpot = Integer.parseInt(input.next());
-					if (userRow >= 0 || userLevel <= spotsPerRow) {
+					if (userSpot >= 0 && userSpot <= spotsPerRow) {
 						testPass = false;
 					}
 					else {
@@ -184,7 +184,7 @@ public class DriverClass {
 				testPass = true;
 				while (testPass) {
 					userLevel = Integer.parseInt(input.next());
-					if (userLevel >= 0 || userLevel <= numberOfLevels) {
+					if (userLevel >= 0 && userLevel <= numberOfLevels) {
 						testPass = false;
 					}
 					else {
@@ -196,7 +196,7 @@ public class DriverClass {
 				testPass = true;
 				while (testPass) {
 					userRow = Integer.parseInt(input.next());
-					if (userRow >= 0 || userLevel <= numberOfSpots/spotsPerRow) {
+					if (userRow >= 0 && userRow <= numberOfSpots/spotsPerRow) {
 						testPass = false;
 					}
 					else {
@@ -208,7 +208,7 @@ public class DriverClass {
 				testPass = true;
 				while (testPass) {
 					userSpot = Integer.parseInt(input.next());
-					if (userRow >= 0 || userLevel <= spotsPerRow) {
+					if (userSpot >= 0 && userSpot <= spotsPerRow) {
 						testPass = false;
 					}
 					else {

@@ -1,16 +1,16 @@
 
-public class ParkingSpots {
+public class ParkingSpot {
 	private Size spotSize;
 	private Vehicle vehicle;
 	
 	//default constructor 
-	public ParkingSpots() {
+	public ParkingSpot() {
 		spotSize = Size.MEDIUM;
 		vehicle = null;
 	}
 	
 	//overloaded constructor
-	public ParkingSpots(Size size) {
+	public ParkingSpot(Size size) {
 	this.spotSize = size;
 	this.vehicle = null;
 	}
