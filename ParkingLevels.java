@@ -45,7 +45,11 @@ public class ParkingLevels {
 				if(spotsInRow[i].getSpotSize()== Size.LARGE) {
 					spotFound = i;
 					for (int check = 0; check < 5 && pass; check++) {
-						if (spotsInRow[i+check].getSpotSize() != Size.LARGE && spotsInRow[i].emptySpot()) {
+						if (spotsInRow[i+check].getSpotSize() != Size.LARGE) {
+							spotFound = -1;
+							pass = false;
+						}
+						else if(!spotsInRow[i+check].emptySpot()) {
 							spotFound = -1;
 							pass = false;
 						}
@@ -189,12 +193,14 @@ public class ParkingLevels {
 	//This method will be used if the space that is taken is greater than 1. Means it will only be used for busses
 	//We are checking to see if there are any busses ahead of the bus that we are removing. If there are then we need to remove them according to where they are placed
 	public int findFirstBusSpot (Vehicle vehicle, int row, int spot) {
-		int newSpot = (row - 1) * SPOTS_PER_ROW + spot-1; // We need a new variable because the spot that we use won't be the same
+		int newSpot = (row - 1) * SPOTS_PER_ROW + spot; // We need a new variable because the spot that we use won't be the same
+		System.out.println("this is new spot " + newSpot);
 		int returnedSpot = 0;
 		int calcBusNumber = 0;
 		int firstSpot = 0;
 		for (int i = newSpot; i > 0; i--) {
 			if (spotsInRow[i].emptySpot() || spotsInRow[newSpot].getVehicle().getSize() != Size.LARGE) {
+				System.out.println("This is returned Spot = " + returnedSpot);
 				break;
 			}
 			else {
@@ -202,7 +208,10 @@ public class ParkingLevels {
 			}
 		}
 		calcBusNumber = (newSpot - returnedSpot)/5;
-		return firstSpot = returnedSpot + (calcBusNumber * 5);
+		System.out.println("This is the bus number  = " + calcBusNumber);
+		firstSpot = returnedSpot + (calcBusNumber * 5);
+		System.out.println("This is the firstBus= " + firstSpot);
+		return firstSpot;
 	}
 	
 	//this function will remove a vehicle in a specific spot

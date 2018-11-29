@@ -60,6 +60,7 @@ public class ParkingLot {
 	//specific remove method
 	public void specificRemove(Vehicle vehicle, int ourLevel, int row, int spot) {
 		int firstBusSpot = level[ourLevel].findFirstBusSpot(vehicle, row, spot);
+		System.out.println("first bus spot = " + firstBusSpot);
 		if(level[ourLevel].findSpecificFullSpot(vehicle, row, spot)) {
 			if(vehicle.getSize() == Size.MEDIUM || vehicle.getSize() == Size.SMALL) {
 				level[ourLevel].removeVehicle(row, spot);
@@ -67,6 +68,7 @@ public class ParkingLot {
 			else if(vehicle.getSize() == Size.LARGE) {
 				for(int i = 0; i < vehicle.getSpaceTaken(); i++) {
 					level[ourLevel].removeVehicle(row, firstBusSpot+i);
+					System.out.println("This is the remove called time " + i);
 				}
 			}
 		}
