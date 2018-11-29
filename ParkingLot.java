@@ -4,6 +4,11 @@ public class ParkingLot {
 	private ParkingLevels[] level;//an array of levels that are in the garage
 	private int totalSpots;
 	
+	//default constructor 
+	public ParkingLot() {
+		this.level = new ParkingLevels[NUM_OF_LEVELS];
+	}
+	
 	//Overloaded constructor for parking lot
 	public ParkingLot(int spots, int spr, int lvl) {
 		this.level = new ParkingLevels[lvl];
@@ -59,7 +64,7 @@ public class ParkingLot {
 	
 	//specific remove method
 	public void specificRemove(Vehicle vehicle, int ourLevel, int row, int spot) {
-		int firstBusSpot = level[ourLevel].findFirstBusSpot(vehicle, row, spot);
+		int firstBusSpot = level[ourLevel].findFirstBusSpot(row, spot);
 		System.out.println("first bus spot = " + firstBusSpot);
 		if(level[ourLevel].findSpecificFullSpot(vehicle, row, spot)) {
 			if(vehicle.getSize() == Size.MEDIUM || vehicle.getSize() == Size.SMALL) {

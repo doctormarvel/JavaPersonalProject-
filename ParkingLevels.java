@@ -9,8 +9,12 @@ public class ParkingLevels {
 	private int busSpots;
 	private boolean pass;//this boolean is used to break for loops. Helps with structure
 	
+	//default constructor 
 	public ParkingLevels () {
 		this.spotsInRow = new ParkingSpots[SPOTS_PER_LEVEL];
+		motorcycleSpots = (int)(SPOTS_PER_LEVEL *(20.0f/100.0f));//taking 20% of the spots and gathering an int for motorcycle spots
+		busSpots = (int)(SPOTS_PER_LEVEL*(20.0f/100.0f)); //taking 20% of the spots and gathering an int for bus spots
+		carSpots = SPOTS_PER_LEVEL - busSpots - motorcycleSpots;
 	}
 	
 	//Overloaded constructor, the default constructor will probably never be used since we are asking for input
@@ -174,14 +178,12 @@ public class ParkingLevels {
 	public boolean findSpecificFullSpot(Vehicle vehicle, int row, int spot) {
 		int newSpot = (row - 1) * SPOTS_PER_ROW + spot-1; // We need a new variable because the spot that we use won't be the same
 		pass = true;
-		if(!spotsInRow[newSpot].emptySpot()) {
-			if(vehicle.getSize() == spotsInRow[newSpot].getVehicle().getSize()) {
-				pass = true;
-			}
-			else {
-				System.out.println("There does not seem to be a vehicle there");
-				pass = false;
-			}
+		if(!spotsInRow[newSpot].emptySpot() && spotsInRow[newSpot].getVehicle().getSize() == vehicle.getSize()) {
+			pass = true;
+		}
+		else if (spotsInRow[newSpot].getVehicle().getSize() != vehicle.getSize()) {
+			System.out.println("That is not the same vehicle");
+			pass = false; 
 		}
 		else {
 			System.out.println("There is nothing in that spot");
@@ -192,7 +194,7 @@ public class ParkingLevels {
 	
 	//This method will be used if the space that is taken is greater than 1. Means it will only be used for busses
 	//We are checking to see if there are any busses ahead of the bus that we are removing. If there are then we need to remove them according to where they are placed
-	public int findFirstBusSpot (Vehicle vehicle, int row, int spot) {
+	public int findFirstBusSpot (int row, int spot) {
 		int newSpot = (row - 1) * SPOTS_PER_ROW + spot; // We need a new variable because the spot that we use won't be the same
 		System.out.println("this is new spot " + newSpot);
 		int returnedSpot = 0;

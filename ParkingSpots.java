@@ -3,7 +3,11 @@ public class ParkingSpots {
 	private Size spotSize;
 	private Vehicle vehicle;
 	
-	public ParkingSpots() {}
+	//default constructor 
+	public ParkingSpots() {
+		spotSize = Size.MEDIUM;
+		vehicle = null;
+	}
 	
 	//overloaded constructor
 	public ParkingSpots(Size size) {

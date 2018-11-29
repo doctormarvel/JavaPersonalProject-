@@ -20,9 +20,13 @@ public class DriverClass {
 		
 		//total number of levels
 		System.out.println("How many levels are there?");
+		testPass = true; 
 		while (testPass) {
 			try {
 				numberOfLevels = Integer.parseInt(input.next());
+				if (numberOfLevels == 0) {
+					numberOfLevels = 5;
+				}
 				testPass = false;
 			} catch(NumberFormatException e){
 				System.out.println("not a valid number, try again");
@@ -35,6 +39,9 @@ public class DriverClass {
 		while (testPass) {
 			try {
 				spotsPerRow = Integer.parseInt(input.next());
+				if (spotsPerRow == 0) {
+					spotsPerRow = 10;
+				}
 				testPass = false;
 			} catch(NumberFormatException e){
 				System.out.println("not a valid number, try again");
@@ -47,6 +54,9 @@ public class DriverClass {
 		while (testPass) {
 			try {
 				numberOfSpots = Integer.parseInt(input.next());
+				if (numberOfSpots == 0) {
+					numberOfSpots = 30;
+				}
 				testPass = false;
 			} catch(NumberFormatException e){
 				System.out.println("not a valid number, try again");
@@ -84,13 +94,54 @@ public class DriverClass {
 			
 			else if (userInput.equals("specificP")) {
 				System.out.println("What level would you like to park in?");
-				userLevel = Integer.parseInt(input.next());
+				testPass = true;
+				while (testPass) {
+					userLevel = Integer.parseInt(input.next());
+					if (userLevel >= 0 || userLevel <= numberOfLevels) {
+						testPass = false;
+					}
+					else {
+						System.out.println("That is not a level");
+					}
+				}
+				
 				System.out.println("What row would you like to park in?");
-				userRow = Integer.parseInt(input.next());
+				testPass = true;
+				while (testPass) {
+					userRow = Integer.parseInt(input.next());
+					if (userRow >= 0 || userLevel <= numberOfSpots/spotsPerRow) {
+						testPass = false;
+					}
+					else {
+						System.out.println("That is not a row");
+					}
+				}
+				
 				System.out.println("What spot would you like to park in?");
-				userSpot = Integer.parseInt(input.next());
+				testPass = true;
+				while (testPass) {
+					userSpot = Integer.parseInt(input.next());
+					if (userRow >= 0 || userLevel <= spotsPerRow) {
+						testPass = false;
+					}
+					else {
+						System.out.println("That is not a spot");
+					}
+				}
+				
 				System.out.println("What would you like to park, a bus, a car, or a motorcycle?");
-				userInput = input.next();
+				testPass = true;
+				while (testPass) {
+					userInput = input.next();
+					if (userInput.equals("bus") || userInput.equals("car") || userInput.equals("motorcycle")) {
+						testPass = false;
+					}
+					else {
+						System.out.println("That is not a vehicle");
+					}
+				}
+				
+				//After getting all of the users input
 				if (userInput.equals("bus")) {
 					bus = new Bus();
 					lot.specificPark(bus, userLevel, userRow, userSpot);
@@ -130,13 +181,51 @@ public class DriverClass {
 			
 			else if (userInput.equals("specificR")) {
 				System.out.println("What level would you like to remove in?");
-				userLevel = Integer.parseInt(input.next());
+				testPass = true;
+				while (testPass) {
+					userLevel = Integer.parseInt(input.next());
+					if (userLevel >= 0 || userLevel <= numberOfLevels) {
+						testPass = false;
+					}
+					else {
+						System.out.println("That is not a level");
+					}
+				}
+				
 				System.out.println("What row would you like to remove in?");
-				userRow = Integer.parseInt(input.next());
+				testPass = true;
+				while (testPass) {
+					userRow = Integer.parseInt(input.next());
+					if (userRow >= 0 || userLevel <= numberOfSpots/spotsPerRow) {
+						testPass = false;
+					}
+					else {
+						System.out.println("That is not a row");
+					}
+				}
+				
 				System.out.println("What spot would you like to remove in?");
-				userSpot = Integer.parseInt(input.next());
+				testPass = true;
+				while (testPass) {
+					userSpot = Integer.parseInt(input.next());
+					if (userRow >= 0 || userLevel <= spotsPerRow) {
+						testPass = false;
+					}
+					else {
+						System.out.println("That is not a spot");
+					}
+				}
 				System.out.println("What would you like to remove, a bus, a car, or a motorcycle?");
-				userInput = input.next();
+				testPass = true;
+				while (testPass) {
+					userInput = input.next();
+					if (userInput.equals("bus") || userInput.equals("car") || userInput.equals("motorcycle")) {
+						testPass = false;
+					}
+					else {
+						System.out.println("That is not a vehicle");
+					}
+				}
 				if (userInput.equals("bus")) {
 					bus = new Bus();
 					lot.specificRemove(bus, userLevel, userRow, userSpot);
