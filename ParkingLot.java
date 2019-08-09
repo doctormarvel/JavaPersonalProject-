@@ -73,7 +73,7 @@ public class ParkingLot {
 			else if(vehicle.getSize() == Size.LARGE) {
 				for(int i = 0; i < vehicle.getSpaceTaken(); i++) {
 					level[ourLevel].removeVehicle(row, firstBusSpot+i);
-					System.out.println("This is the remove called time " + i);
+					System.out.println("This is i " + i);
 				}
 			}
 		}

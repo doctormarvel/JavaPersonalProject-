@@ -1,5 +1,12 @@
 import java.util.*;
 
+/*
+Larry Kridner
+CS 2336.006
+To run the code with the default numbers you just need to enter a 0 for the level, rows, and spots. The input is case sensitive so if you enter it wrong you will be asked again.
+To end the program either type end while you see the parking lot or come across a error
+*/
+
 public class DriverClass {
 
 	public static void main (String[] args) {
@@ -70,20 +77,20 @@ public class DriverClass {
 		
 		//While loop that will continue till there are no more spots or until the user tells the program to end
 		while (true) {
-			System.out.println("Type \"park\" to park a vehicle, \"specificP\" to park in a specific spot, \"remove\" to remove a vehicle, \"specificR\" to reomve a specific vehicle, or type \"end\" to end the program");
+			System.out.println("Type \"park or (1)\" to park a vehicle, \"specificP or (2)\" to park in a specific spot, \"remove or (3)\" to remove a vehicle, \"specificR or (4)\" to reomve a specific vehicle, or type \"end or (5)\" to end the program");
 			userInput = input.next();
-			if(userInput.equals("park")) {
-				System.out.println("What would you like to park, a bus, a car, or a motorcycle?");
+			if(userInput.equals("park") || userInput.equals("1")) {
+				System.out.println("What would you like to park, a bus (1), a car (2), or a motorcycle (3)?");
 				userInput = input.next();
-				if (userInput.equals("bus")) {
+				if (userInput.equals("bus") || userInput.equals("1")) {
 					bus = new Bus();
 					lot.park(bus);
 				}
-				else if (userInput.equals("car")) {
+				else if (userInput.equals("car") || userInput.equals("2")) {
 					car = new Car();
 					lot.park(car);
 				}
-				else if (userInput.equals("motorcycle")) {
+				else if (userInput.equals("motorcycle") || userInput.equals("3")) {
 					motorcycle = new Motorcycle();
 					lot.park(motorcycle);
 				}
@@ -92,7 +99,7 @@ public class DriverClass {
 				}
 			}
 			
-			else if (userInput.equals("specificP")) {
+			else if (userInput.equals("specificP") || userInput.equals("2")) {
 				System.out.println("What level would you like to park in?");
 				testPass = true;
 				while (testPass) {
@@ -159,7 +166,7 @@ public class DriverClass {
 				}
 			}
 			
-			else if (userInput.equals("remove")) {
+			else if (userInput.equals("remove") || userInput.equals("3")) {
 				System.out.println("What type of vehicle would you like to remove, a bus, a car, or a motorcycle");
 				userInput = input.next();
 				if (userInput.equals("bus")) {
@@ -179,7 +186,7 @@ public class DriverClass {
 				}
 			}
 			
-			else if (userInput.equals("specificR")) {
+			else if (userInput.equals("specificR") || userInput.equals("4")) {
 				System.out.println("What level would you like to remove in?");
 				testPass = true;
 				while (testPass) {
@@ -243,7 +250,7 @@ public class DriverClass {
 				}
 			}
 			
-			else if (userInput.equals("end")) {
+			else if (userInput.equals("end") || userInput.equals("5")) {
 				System.out.println("\n\nEnding the program");
 				break;
 			}

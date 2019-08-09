@@ -152,8 +152,7 @@ public class ParkingLevels {
 					}
 					else
 					{
-						System.out.println("This is temp: "+ temp);
-						System.out.println("This is i: " + i);
+
 						temp++;
 					}
 				}
@@ -196,11 +195,10 @@ public class ParkingLevels {
 	//We are checking to see if there are any busses ahead of the bus that we are removing. If there are then we need to remove them according to where they are placed
 	public int findFirstBusSpot (int row, int spot) {
 		int newSpot = (row - 1) * SPOTS_PER_ROW + spot; // We need a new variable because the spot that we use won't be the same
-		System.out.println("this is new spot " + newSpot);
 		int returnedSpot = 0;
 		int calcBusNumber = 0;
 		for (int i = newSpot; i > 0; i--) {
-			if (spotsInRow[i].emptySpot() || spotsInRow[newSpot].getVehicle().getSize() != Size.LARGE) {
+			if (spotsInRow[i].emptySpot() || spotsInRow[i].getVehicle().getSize() != Size.LARGE) {
 				break;
 			}
 			else {
